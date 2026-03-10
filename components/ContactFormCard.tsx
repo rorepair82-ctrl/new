@@ -6,11 +6,13 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export default function ContactFormCard() {
   const [formData, setFormData] = useState({
-    name: '',
+    vorname: '',
+    nachname: '',
     email: '',
     telefon: '',
-    unternehmen: '',
-    nachricht: '',
+    standort: '',
+    geraetetyp: '',
+    problembeschreibung: '',
   })
   const [status, setStatus] = useState<Status>('idle')
 
@@ -19,19 +21,43 @@ export default function ContactFormCard() {
     setStatus('sending')
 
     try {
+      const name = `${formData.vorname} ${formData.nachname}`.trim()
+      const nachricht = [
+        formData.standort && `Standort/PLZ: ${formData.standort}`,
+        formData.geraetetyp && `Gerätetyp: ${formData.geraetetyp}`,
+        formData.problembeschreibung && `Problembeschreibung:\n${formData.problembeschreibung}`,
+      ]
+        .filter(Boolean)
+        .join('\n\n')
+
+      const payload = {
+        name,
+        email: formData.email,
+        telefon: formData.telefon,
+        nachricht,
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       })
 
       const result = await response.json()
 
       if (response.ok && result.success) {
         setStatus('success')
-        setFormData({ name: '', email: '', telefon: '', unternehmen: '', nachricht: '' })
+        setFormData({
+          vorname: '',
+          nachname: '',
+          email: '',
+          telefon: '',
+          standort: '',
+          geraetetyp: '',
+          problembeschreibung: '',
+        })
       } else {
         setStatus('error')
         console.error('Form submission error:', result.error || 'Unknown error')
@@ -42,7 +68,7 @@ export default function ContactFormCard() {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -50,223 +76,168 @@ export default function ContactFormCard() {
   }
 
   return (
-    <div className="relative bg-white rounded-2xl md:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 border-2 border-gray-100 hover:border-solar-primary/30 transition-all duration-300 overflow-hidden">
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-solar-secondary/5 to-transparent rounded-full blur-2xl -ml-32 -mt-32"></div>
-      <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tr from-solar-primary/5 to-transparent rounded-full blur-2xl -mr-24 -mb-24"></div>
-
+    <div className="relative bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200">
       <div className="relative z-10">
-        <div className="flex items-center mb-6 md:mb-8 pb-4 md:pb-6 border-b-2 border-gray-100">
-          <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-solar-primary to-solar-secondary rounded-xl md:rounded-2xl flex items-center justify-center mr-3 md:mr-4 shadow-xl transform hover:scale-110 transition-transform duration-200 flex-shrink-0">
-            <svg
-              className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-          </div>
-          <div className="min-w-0 flex-1">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 break-words">
-              Kontaktformular
-            </h2>
-            <p className="text-gray-500 text-xs md:text-sm">Füllen Sie das Formular aus</p>
-          </div>
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
+            Schnellanfrage – Wir rufen Sie zurück!
+          </h2>
+          <p className="text-gray-500 text-sm md:text-base">
+            Füllen Sie das Formular aus, wir melden uns schnellstmöglich bei Ihnen.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-          {/* First row: Name + E-Mail */}
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+          {/* First row: Vorname + Nachname + Telefonnummer + E-Mail-Adresse */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             <div className="relative">
               <label
-                htmlFor="name"
-                className="block text-gray-900 font-bold mb-2 md:mb-2.5 text-sm md:text-base"
+                htmlFor="vorname"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
               >
-                Name <span className="text-red-500">*</span>
+                Vorname <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Ihr vollständiger Name"
-                  className="w-full pl-10 md:pl-12 pr-3 md:pr-5 py-2.5 md:py-3.5 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-4 focus:ring-solar-primary/20 focus:border-solar-primary transition-all duration-200 text-sm md:text-base text-gray-900 placeholder-gray-400 bg-gray-50 hover:bg-white"
-                />
-              </div>
+              <input
+                type="text"
+                id="vorname"
+                name="vorname"
+                required
+                value={formData.vorname}
+                onChange={handleChange}
+                placeholder="Max"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400"
+              />
             </div>
 
             <div className="relative">
               <label
-                htmlFor="email"
-                className="block text-gray-900 font-bold mb-2 md:mb-2.5 text-sm md:text-base"
+                htmlFor="nachname"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
               >
-                E-Mail <span className="text-red-500">*</span>
+                Nachname <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="ihre.email@beispiel.com"
-                  className="w-full pl-10 md:pl-12 pr-3 md:pr-5 py-2.5 md:py-3.5 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-4 focus:ring-solar-primary/20 focus:border-solar-primary transition-all duration-200 text-sm md:text-base text-gray-900 placeholder-gray-400 bg-gray-50 hover:bg-white"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Second row: Unternehmen + Telefon */}
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-            <div className="relative">
-              <label
-                htmlFor="unternehmen"
-                className="block text-gray-900 font-bold mb-2 md:mb-2.5 text-sm md:text-base"
-              >
-                Unternehmen
-              </label>
-              <div className="relative">
-                <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="text"
-                  id="unternehmen"
-                  name="unternehmen"
-                  value={formData.unternehmen}
-                  onChange={handleChange}
-                  placeholder="Ihr Unternehmen (optional)"
-                  className="w-full pl-10 md:pl-12 pr-3 md:pr-5 py-2.5 md:py-3.5 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-4 focus:ring-solar-primary/20 focus:border-solar-primary transition-all duration-200 text-sm md:text-base text-gray-900 placeholder-gray-400 bg-gray-50 hover:bg-white"
-                />
-              </div>
+              <input
+                type="text"
+                id="nachname"
+                name="nachname"
+                required
+                value={formData.nachname}
+                onChange={handleChange}
+                placeholder="Mustermann"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400"
+              />
             </div>
 
             <div className="relative">
               <label
                 htmlFor="telefon"
-                className="block text-gray-900 font-bold mb-2 md:mb-2.5 text-sm md:text-base"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
               >
-                Telefon
+                Telefonnummer <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="tel"
-                  id="telefon"
-                  name="telefon"
-                  value={formData.telefon}
-                  onChange={handleChange}
-                  placeholder="+43 660 657 7900"
-                  className="w-full pl-10 md:pl-12 pr-3 md:pr-5 py-2.5 md:py-3.5 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-4 focus:ring-solar-primary/20 focus:border-solar-primary transition-all duration-200 text-sm md:text-base text-gray-900 placeholder-gray-400 bg-gray-50 hover:bg-white"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Nachricht */}
-          <div className="relative">
-            <label
-              htmlFor="nachricht"
-              className="block text-gray-900 font-bold mb-2 md:mb-2.5 text-sm md:text-base"
-            >
-              Nachricht <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <div className="absolute left-3 md:left-4 top-3 md:top-4 text-gray-400">
-                <svg
-                  className="w-4 h-4 md:w-5 md:h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
-              </div>
-              <textarea
-                id="nachricht"
-                name="nachricht"
+              <input
+                type="tel"
+                id="telefon"
+                name="telefon"
                 required
-                rows={6}
-                value={formData.nachricht}
+                value={formData.telefon}
                 onChange={handleChange}
-                placeholder="Beschreiben Sie bitte Ihr Problem..."
-                className="w-full pl-10 md:pl-12 pr-3 md:pr-5 py-2.5 md:py-3.5 border-2 border-gray-300 rounded-lg md:rounded-xl focus:ring-4 focus:ring-solar-primary/20 focus:border-solar-primary transition-all duration-200 resize-none text-sm md:text-base text-gray-900 placeholder-gray-400 bg-gray-50 hover:bg-white"
+                placeholder="+43 ..."
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400"
+              />
+            </div>
+
+            <div className="relative">
+              <label
+                htmlFor="email"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
+              >
+                E-Mail-Adresse <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="email@example.com"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400"
               />
             </div>
           </div>
 
+          {/* Second row: Standort/PLZ + Gerätetyp */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+            <div className="relative">
+              <label
+                htmlFor="standort"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
+              >
+                Standort/PLZ <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="standort"
+                name="standort"
+                required
+                value={formData.standort}
+                onChange={handleChange}
+                placeholder="Wien, 1010"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400"
+              />
+            </div>
+
+            <div className="relative">
+              <label
+                htmlFor="geraetetyp"
+                className="block text-gray-900 font-medium mb-1.5 text-sm"
+              >
+                Gerätetyp <span className="text-red-500">*</span>
+              </label>
+              <select
+                id="geraetetyp"
+                name="geraetetyp"
+                required
+                value={formData.geraetetyp}
+                onChange={handleChange}
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 bg-white"
+              >
+                <option value="">Bitte wählen…</option>
+                <option value="Waschmaschine">Waschmaschine</option>
+                <option value="Geschirrspüler">Geschirrspüler</option>
+                <option value="Kühlschrank">Kühlschrank</option>
+                <option value="Backofen">Backofen</option>
+                <option value="Elektroherd">Elektroherd</option>
+                <option value="Mikrowelle">Mikrowelle</option>
+                <option value="Trockner">Trockner</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Problembeschreibung */}
+          <div className="relative">
+            <label
+              htmlFor="problembeschreibung"
+              className="block text-gray-900 font-medium mb-1.5 text-sm"
+            >
+              Problembeschreibung <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              id="problembeschreibung"
+              name="problembeschreibung"
+              required
+              rows={4}
+              value={formData.problembeschreibung}
+              onChange={handleChange}
+              placeholder="Beschreiben Sie kurz das Problem mit Ihrem Gerät…"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-solar-primary/30 focus:border-solar-primary text-sm text-gray-900 placeholder-gray-400 resize-none"
+            />
+          </div>
+
           {status === 'success' && (
-            <div className="bg-gradient-to-r from-solar-primary/5 to-solar-secondary/5 border-2 border-solar-primary/40 text-solar-dark px-3 md:px-5 py-3 md:py-4 rounded-lg md:rounded-xl flex items-start md:items-center">
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 md:px-4 py-3 rounded-lg flex items-start md:items-center text-sm">
               <svg
                 className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-0"
                 fill="none"
@@ -280,14 +251,14 @@ export default function ContactFormCard() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <p className="font-semibold text-sm md:text-base break-words">
+              <p className="font-semibold break-words">
                 Ihre Nachricht wurde erfolgreich gesendet! Wir melden uns schnellstmöglich bei Ihnen.
               </p>
             </div>
           )}
 
           {status === 'error' && (
-            <div className="bg-gradient-to-r from-red-50 to-rose-50 border-2 border-red-300 text-red-800 px-3 md:px-5 py-3 md:py-4 rounded-lg md:rounded-xl flex items-start md:items-center">
+            <div className="bg-red-50 border border-red-200 text-red-800 px-3 md:px-4 py-3 rounded-lg flex items-start md:items-center text-sm">
               <svg
                 className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-0"
                 fill="none"
@@ -301,7 +272,7 @@ export default function ContactFormCard() {
                   d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <p className="font-semibold text-sm md:text-base break-words">
+              <p className="font-semibold break-words">
                 Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut oder
                 kontaktieren Sie uns telefonisch.
               </p>
@@ -311,7 +282,7 @@ export default function ContactFormCard() {
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="w-full bg-gradient-to-r from-solar-primary via-solar-primary to-solar-secondary text-white px-4 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-bold text-sm md:text-base lg:text-lg hover:from-solar-dark hover:via-solar-dark hover:to-solar-primary transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-xl flex items-center justify-center"
+            className="w-full md:w-auto px-6 md:px-8 py-2.5 md:py-3 rounded-full bg-solar-primary hover:bg-solar-dark text-white font-semibold text-sm md:text-base flex items-center justify-center mx-auto disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === 'sending' ? (
               <>
@@ -339,8 +310,8 @@ export default function ContactFormCard() {
               </>
             ) : (
               <>
-                Anfrage senden
-                <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="mr-2">Anfrage senden</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -351,6 +322,10 @@ export default function ContactFormCard() {
               </>
             )}
           </button>
+
+          <p className="text-[11px] md:text-xs text-gray-400 text-center mt-2">
+            Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer Datenschutzerklärung zu.
+          </p>
         </form>
       </div>
     </div>

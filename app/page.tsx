@@ -32,116 +32,159 @@ function HomeContent() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingJsonLd) }}
       />
-      {/* Hero Section – SEO & Google Ads optimiert */}
-      <section className="relative min-h-[600px] md:min-h-[700px] flex items-center px-4 sm:px-6 pt-28 sm:pt-32 md:pt-40 pb-12 md:pb-16 overflow-hidden" aria-label="Hauptbereich">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1621578216288-7ba7b7a5ff04?auto=format&fit=crop&w=2070&q=80"
-            alt="Reparatur Waschmaschine und Kühlschrank – Haushaltsgeräte-Service in Österreich"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center' }}
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
+      {/* Hero Section – zentrale Service-Karte */}
+      <section
+        className="relative flex items-center justify-center px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-10 md:pb-14 bg-gradient-to-b from-slate-50 via-white to-slate-100"
+        aria-label="Hauptbereich"
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-24 -right-16 w-72 h-72 bg-solar-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 -left-20 w-80 h-80 bg-solar-secondary/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row lg:items-center gap-6 sm:gap-8 lg:gap-10 xl:gap-12 min-w-0">
-          {/* Hero Text */}
-          <div className="lg:flex-[7] text-white order-1">
-            <p className="text-white/90 text-sm sm:text-base font-semibold mb-2 md:mb-3 uppercase tracking-wide">
-              Reparatur & Service in ganz Österreich
+        <div className="relative z-10 w-full max-w-5xl px-0 sm:px-4">
+          <div className="bg-white rounded-3xl shadow-xl md:shadow-2xl border border-slate-200 px-5 sm:px-7 md:px-9 py-6 sm:py-7 md:py-8">
+            {/* Badge */}
+            <div className="flex justify-center mb-4">
+              <div className="inline-flex items-center px-3 sm:px-4 py-1 rounded-full bg-solar-primary/5 text-solar-dark text-[11px] sm:text-xs font-medium border border-solar-primary/20">
+                <span className="w-4 h-4 rounded-full border border-solar-primary flex items-center justify-center mr-1.5">
+                  <span className="w-2 h-2 rounded-full bg-solar-primary" />
+                </span>
+                Über 5.000 zufriedene Kunden österreichweit
+              </div>
+            </div>
+
+            {/* Heading */}
+            <div className="text-center mb-5 sm:mb-6">
+              <p className="text-sm sm:text-base font-semibold text-slate-700 mb-1">
+                Haushaltsgeräte
+              </p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
+                Kundendienst
+              </h1>
+            </div>
+
+            {/* Description */}
+            <p className="text-center text-sm sm:text-base text-slate-600 max-w-xl mx-auto mb-6 sm:mb-7">
+              Schnell, zuverlässig und fair. Wir reparieren alle Marken mit transparenten Preisen
+              und hoher Qualität.
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-              Waschmaschine, Kühlschrank & Herd reparieren –{' '}
-              <span className="bg-gradient-to-r from-white via-solar-primary to-solar-secondary bg-clip-text text-transparent font-bold">
-                schnell, fair, zuverlässig
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-4 md:mb-6 text-white/90 leading-relaxed max-w-2xl">
-              Professionelle <strong>Reparatur</strong>, <strong>Wartung</strong> und <strong>Installation</strong> von Haushaltsgeräten: Waschmaschine, Kühlschrank, Herd, Geschirrspüler. Kostenlose Beratung und faire Festpreise.
-            </p>
-            <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm md:text-base text-white/90 mb-6 md:mb-8" aria-hidden="true">
-              <li>✓ Kostenlose Beratung</li>
-              <li>✓ Faire Festpreise</li>
-              <li>✓ Schnelle Termine</li>
-            </ul>
-            <div className="flex gap-3 md:gap-4 flex-wrap">
-              <Link 
-                href="/kontakt" 
-                className="bg-solar-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-solar-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm md:text-base"
-                aria-label="Kostenlose Beratung anfragen"
-              >
-                Kostenlose Beratung anfragen
-              </Link>
-              <a 
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-4 sm:mb-5">
+              <a
                 href={`tel:${company.phoneRaw}`}
-                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-semibold hover:bg-white/20 transition-all shadow-lg hover:shadow-xl text-sm md:text-base inline-flex items-center"
+                className="inline-flex items-center justify-center rounded-full bg-solar-primary hover:bg-solar-dark text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-2.5 shadow-md transition-colors"
                 aria-label="Jetzt anrufen"
               >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                {company.phone}
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+                Jetzt anrufen
               </a>
-            </div>
-          </div>
 
-          {/* Kontakt-Karte – Conversion-Box für Google Ads */}
-          <div className="lg:flex-[5] order-2 flex items-center justify-center lg:justify-end w-full">
-            <div className="w-full max-w-md lg:max-w-none lg:min-w-[300px] bg-black/60 backdrop-blur-sm rounded-2xl shadow-2xl p-5 sm:p-6 md:p-8 lg:p-10 border-2 border-white/20 text-white text-center">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
-                Defekt? Jetzt Reparatur oder Montage anfragen
-              </h2>
-              <p className="mb-4 sm:mb-6 md:mb-8 text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-                Waschmaschine, Kühlschrank oder Herd defekt? Wir reparieren und installieren fachgerecht – unverbindliche Beratung und transparente Preise.
-              </p>
-              <p className="mb-3 md:mb-4 text-white font-semibold text-sm sm:text-base md:text-lg">
-                Direkt anrufen oder Anfrage senden
-              </p>
-              <a 
-                href={`tel:${company.phoneRaw}`}
-                className="inline-block bg-solar-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-solar-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm md:text-base lg:text-lg w-full sm:w-auto"
-                aria-label="Telefonnummer anrufen"
+              <Link
+                href="/kontakt"
+                className="inline-flex items-center justify-center rounded-full border border-slate-300 text-slate-800 text-sm sm:text-base font-semibold px-6 sm:px-8 py-2.5 bg-white hover:bg-slate-50 transition-colors"
+                aria-label="Online Anfrage senden"
               >
-                {company.phone}
-              </a>
+                Online Anfrage
+                <svg
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Phone number */}
+            <p className="text-center text-base sm:text-lg font-semibold text-slate-900 mb-4">
+              {company.phone}
+            </p>
+
+            {/* Bullet points */}
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600">
+              <div className="flex items-center">
+                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
+                  <svg
+                    className="w-3 h-3 text-solar-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+                Kostenvoranschlag vor Ort
+              </div>
+              <div className="flex items-center">
+                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
+                  <svg
+                    className="w-3 h-3 text-solar-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+                Faire Preise
+              </div>
+              <div className="flex items-center">
+                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
+                  <svg
+                    className="w-3 h-3 text-solar-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+                Alle Marken
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* USP / Trust – Message Match für Google Ads */}
-      <section className="py-10 sm:py-12 px-4 bg-white border-b border-gray-100" aria-label="Ihre Vorteile">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="sr-only">Warum Reparatur und Service bei uns</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-            <li className="flex flex-col items-center">
-              <span className="w-12 h-12 rounded-full bg-solar-primary/10 flex items-center justify-center mb-2" aria-hidden="true">
-                <svg className="w-6 h-6 text-solar-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </span>
-              <strong className="text-gray-900">Kostenlose Beratung</strong>
-              <span className="text-sm text-gray-600">Unverbindliche Anfrage</span>
-            </li>
-            <li className="flex flex-col items-center">
-              <span className="w-12 h-12 rounded-full bg-solar-primary/10 flex items-center justify-center mb-2" aria-hidden="true">
-                <svg className="w-6 h-6 text-solar-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              </span>
-              <strong className="text-gray-900">Faire Festpreise</strong>
-              <span className="text-sm text-gray-600">Transparent vor der Reparatur</span>
-            </li>
-            <li className="flex flex-col items-center">
-              <span className="w-12 h-12 rounded-full bg-solar-primary/10 flex items-center justify-center mb-2" aria-hidden="true">
-                <svg className="w-6 h-6 text-solar-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              </span>
-              <strong className="text-gray-900">Schnelle Termine</strong>
-              <span className="text-sm text-gray-600">Kurzfristig verfügbar</span>
-            </li>
-            <li className="flex flex-col items-center">
-              <span className="w-12 h-12 rounded-full bg-solar-primary/10 flex items-center justify-center mb-2" aria-hidden="true">
-                <svg className="w-6 h-6 text-solar-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              </span>
-              <strong className="text-gray-900">Erfahrene Techniker</strong>
-              <span className="text-sm text-gray-600">Fachbetrieb Haushaltsgeräte</span>
-            </li>
-          </ul>
+      {/* Kontaktformular direkt nach Hero */}
+      <section className="py-12 sm:py-16 md:py-20 px-4 bg-white" aria-labelledby="home-contact-heading">
+        <div className="max-w-5xl mx-auto">
+          <ContactFormCard />
         </div>
       </section>
 
@@ -401,24 +444,6 @@ function HomeContent() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Kontaktformular auf der Startseite */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 bg-white" aria-labelledby="home-contact-heading">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <h2
-              id="home-contact-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3"
-            >
-              Kontaktformular
-            </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.
-            </p>
-          </div>
-          <ContactFormCard />
         </div>
       </section>
 

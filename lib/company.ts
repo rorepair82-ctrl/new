@@ -4,7 +4,7 @@
  */
 export const company = {
   /** Firmenname (z. B. für Impressum, Footer, AGB) */
-  name: 'Musterfirma GmbH',
+  name: 'Kundendienstgeraete',
   /** Straße und Hausnummer */
   street: 'Musterstraße 1',
   /** PLZ und Ort */
