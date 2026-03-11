@@ -20,7 +20,7 @@ export const company = {
     return `${this.street}, ${this.city}`
   },
   /** Telefon (Anzeige) */
-  phone: '+43 660 657 7900',
+  phone: '+43 660 158 3077',
   /** Telefon für tel:-Link (ohne Leerzeichen) */
   phoneRaw: '+436601583077',
   /** E-Mail */
