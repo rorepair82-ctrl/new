@@ -112,7 +112,7 @@ export default function DatenschutzPage() {
           <p>
             Eine bereits erteilte Einwilligung in die Verarbeitung Ihrer personenbezogenen Daten
             können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Senden Sie uns hierzu
-            einfach eine formlose E-Mail an <strong>office@reparaturgeraete.at</strong>.
+            einfach eine formlose E-Mail an <strong>office@kundendienstgeraete.at</strong>.
           </p>
 
           <h3>9. Beschwerderecht bei der Aufsichtsbehörde</h3>
