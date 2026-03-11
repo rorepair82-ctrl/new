@@ -22,7 +22,7 @@ export const company = {
   /** Telefon (Anzeige) */
   phone: '+43 660 657 7900',
   /** Telefon für tel:-Link (ohne Leerzeichen) */
-  phoneRaw: '+436606577900',
+  phoneRaw: '+436601583077',
   /** E-Mail */
   email: 'office@kundendienstgeraete.at',
   /** UID-Nummer (Österreich) */
