@@ -39,9 +39,9 @@ export default function DatenschutzPage() {
           <p>
             <strong>GeräteProfi Kundendienst</strong>
             <br />
-            Telefon: +43 676 453 1979
+            Telefon: +43 660 158 3077
             <br />
-            E-Mail: office@reparaturgeraete.at
+            E-Mail: office@kundendienstgeraete.at
           </p>
 
           <h3>3. Datenerhebung</h3>
