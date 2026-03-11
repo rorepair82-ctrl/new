@@ -4,7 +4,6 @@ import React from 'react'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import CookieBanner from '@/components/CookieBanner'
 import { company } from '@/lib/company'
 import { baseUrl, defaultOgImage } from '@/lib/seo'
 
@@ -117,7 +116,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <CookieBanner />
       </body>
     </html>
   )

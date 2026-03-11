@@ -68,13 +68,13 @@ export default function HomeEn() {
             <div className="flex gap-3 md:gap-4 flex-wrap">
               <Link
                 href="/en/kontakt"
-                className="bg-solar-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-solar-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm md:text-base"
+                className="bg-solar-primary text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full font-bold hover:bg-solar-dark transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-sm md:text-base"
               >
                 Request free consultation
               </Link>
               <a
                 href={`tel:${company.phoneRaw}`}
-                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-semibold hover:bg-white/20 transition-all shadow-lg hover:shadow-xl text-sm md:text-base inline-flex items-center"
+                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full font-semibold hover:bg-white/20 transition-all shadow-lg hover:shadow-xl text-sm md:text-base inline-flex items-center"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path

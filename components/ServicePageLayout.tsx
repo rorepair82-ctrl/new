@@ -71,7 +71,7 @@ export default function ServicePageLayout({
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/kontakt"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-solar-primary text-white font-semibold text-sm sm:text-base shadow-lg hover:bg-solar-dark hover:shadow-xl transition-all"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-solar-primary text-white font-semibold text-sm sm:text-base shadow-lg hover:bg-solar-dark hover:shadow-xl transition-all"
                 >
                   Anfrage senden
                   <svg
@@ -90,7 +90,7 @@ export default function ServicePageLayout({
                 </Link>
                 <a
                   href={`tel:${company.phoneRaw}`}
-                  className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-solar-primary/40 bg-white/80 text-solar-dark font-semibold text-sm sm:text-base shadow-sm hover:bg-solar-primary/5 hover:border-solar-primary transition-all"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-solar-primary/40 bg-white/80 text-solar-dark font-semibold text-sm sm:text-base shadow-sm hover:bg-solar-primary/5 hover:border-solar-primary transition-all"
                 >
                   <svg
                     className="w-4 h-4 mr-2"

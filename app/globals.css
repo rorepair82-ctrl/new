@@ -17,4 +17,8 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .btn-radius-20 {
+    border-radius: 20%;
+  }
 }

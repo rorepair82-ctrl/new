@@ -43,12 +43,6 @@ export default function UberUns() {
               </p>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
-              <h3 className="font-semibold text-slate-900 mb-1.5">Garantie</h3>
-              <p className="text-sm text-slate-600">
-                12 Monate Garantie auf alle Reparaturen.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <h3 className="font-semibold text-slate-900 mb-1.5">Qualität</h3>
               <p className="text-sm text-slate-600">
                 Nur Original-Ersatzteile oder hochwertige Alternativen.

@@ -22,7 +22,7 @@ export default function OvenRepairEnPage() {
       </p>
       <Link
         href="/en/kontakt"
-        className="inline-flex items-center px-6 py-3 rounded-xl bg-solar-primary text-white font-semibold hover:bg-solar-dark transition-colors"
+        className="inline-flex items-center px-6 py-3 rounded-full bg-solar-primary text-white font-semibold hover:bg-solar-dark transition-colors"
       >
         Request oven repair
       </Link>
