@@ -22,6 +22,9 @@ export default function CookieBanner() {
 
   const handleAcceptNecessary = () => {
     localStorage.setItem('cookieConsent', 'necessary')
+    if (typeof window !== 'undefined' && (window as any).rejectCookies) {
+      ;(window as any).rejectCookies()
+    }
     setIsVisible(false)
     setTimeout(() => {
       setShowBanner(false)
@@ -30,6 +33,9 @@ export default function CookieBanner() {
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookieConsent', 'all')
+    if (typeof window !== 'undefined' && (window as any).acceptCookies) {
+      ;(window as any).acceptCookies()
+    }
     setIsVisible(false)
     setTimeout(() => {
       setShowBanner(false)
@@ -40,18 +46,12 @@ export default function CookieBanner() {
 
   return (
     <>
-      {/* Backdrop */}
-      <div 
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
+      {/* Cookie Banner (non-blocking, no backdrop) */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-6 transition-all duration-300 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
         }`}
-        onClick={handleAcceptNecessary}
-      />
-      
-      {/* Cookie Banner */}
-      <div className={`fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-6 transition-all duration-300 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-      }`}>
+      >
         <div className="max-w-5xl mx-auto bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 p-4 sm:p-5 md:p-6 transform transition-all">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
             <div className="flex-1 min-w-0">

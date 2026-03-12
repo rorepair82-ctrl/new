@@ -35,7 +35,7 @@ function HomeContent() {
       />
       {/* Hero Section – zentrale Service-Karte */}
       <section
-        className="relative flex items-center justify-center px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-10 md:pb-14 bg-white"
+        className="relative flex items-center justify-center px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-10 md:pb-14 bg-white overflow-hidden"
         aria-label="Hauptbereich"
       >
         <div className="absolute inset-0 pointer-events-none">
