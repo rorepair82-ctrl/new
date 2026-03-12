@@ -14,6 +14,12 @@ export default function Navigation() {
   const basePath = pathname || '/'
   const localePrefix = ''
 
+  const handleCallClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+      ;(window as any).gtag_report_conversion(`tel:${company.phoneRaw}`)
+    }
+  }
+
   const services = [
     {
       name: isEnglish ? 'Washing machine repair' : 'Waschmaschinen-Reparatur',
@@ -128,6 +134,7 @@ export default function Navigation() {
             {/* Call Button */}
             <a
               href={`tel:${company.phoneRaw}`}
+              onClick={handleCallClick}
               className="ml-3 inline-flex items-center px-4 py-2 rounded-full bg-solar-primary text-white text-sm font-semibold shadow-sm hover:bg-solar-dark transition-colors"
             >
               <svg
@@ -240,6 +247,7 @@ export default function Navigation() {
             </Link>
             <a
               href={`tel:${company.phoneRaw}`}
+              onClick={handleCallClick}
               className="block px-3 py-2 mt-1 text-sm font-semibold text-white bg-solar-primary hover:bg-solar-dark rounded text-center"
             >
               {company.phone}

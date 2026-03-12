@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { company } from '@/lib/company'
 import { baseUrl, buildPageMetadata } from '@/lib/seo'
 import ContactFormCard from '@/components/ContactFormCard'
+import CallConversionLink from '@/components/CallConversionLink'
 
 export const metadata = buildPageMetadata({
   title: 'Waschmaschine & Kühlschrank Reparatur Österreich – Service & Montage',
@@ -72,10 +73,10 @@ function HomeContent() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-4 sm:mb-5">
-              <a
+              <CallConversionLink
                 href={`tel:${company.phoneRaw}`}
+                ariaLabel="Jetzt anrufen"
                 className="inline-flex items-center justify-center rounded-full bg-solar-primary hover:bg-solar-dark text-white text-sm sm:text-base font-semibold px-7 sm:px-8 py-2.5 shadow-lg transition-colors"
-                aria-label="Jetzt anrufen"
               >
                 <svg
                   className="w-4 h-4 mr-2"
@@ -91,7 +92,7 @@ function HomeContent() {
                   />
                 </svg>
                 Jetzt anrufen
-              </a>
+              </CallConversionLink>
 
               <Link
                 href="/kontakt"

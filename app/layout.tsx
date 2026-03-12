@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
 import React from 'react'
+import Script from 'next/script'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -107,6 +108,69 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning className={outfit.variable}>
       <body className="font-sans antialiased">
+        {/* Google Ads global site tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17361716299"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17361716299');
+          `}
+        </Script>
+
+        {/* Google Ads phone conversion helper */}
+        <Script id="gtag-phone-conversion" strategy="afterInteractive">
+          {`
+            window.gtag_report_conversion = function(url) {
+              var callback = function () {
+                if (typeof url !== 'undefined') {
+                  window.location = url;
+                }
+              };
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                  send_to: 'AW-17361716299/iWwVCMXUkoccEMUI29ZA',
+                  value: 1.0,
+                  currency: 'EUR',
+                  event_callback: callback,
+                });
+              } else {
+                callback();
+              }
+              return false;
+            };
+          `}
+        </Script>
+
+        {/* Google Ads form submission conversion helper */}
+        <Script id="gtag-form-conversion" strategy="afterInteractive">
+          {`
+            window.gtag_report_form_conversion = function(url) {
+              var callback = function () {
+                if (typeof url !== 'undefined') {
+                  window.location = url;
+                }
+              };
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                  send_to: 'AW-17361716299/eU_LCIFS_OYCEMUI29ZA',
+                  value: 1.0,
+                  currency: 'EUR',
+                  event_callback: callback,
+                });
+              } else {
+                callback();
+              }
+              return false;
+            };
+          `}
+        </Script>
+
+        {/* JSON-LD structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

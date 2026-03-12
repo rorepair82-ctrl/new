@@ -49,6 +49,11 @@ export default function ContactFormCard() {
 
       if (response.ok && result.success) {
         setStatus('success')
+
+        if (typeof window !== 'undefined' && (window as any).gtag_report_form_conversion) {
+          ;(window as any).gtag_report_form_conversion()
+        }
+
         setFormData({
           vorname: '',
           nachname: '',
