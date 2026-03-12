@@ -117,9 +117,12 @@ function HomeContent() {
             </div>
 
             {/* Phone number */}
-            <p className="text-center text-base sm:text-lg font-semibold text-slate-900 mb-4">
+            <a
+              href={`tel:${company.phoneRaw}`}
+              className="block text-center text-base sm:text-lg font-semibold text-slate-900 mb-4 hover:text-solar-primary transition-colors"
+            >
               {company.phone}
-            </p>
+            </a>
 
             {/* Bullet points */}
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600">

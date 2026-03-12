@@ -133,7 +133,7 @@ export default function RootLayout({
               };
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'conversion', {
-                  send_to: 'AW-17361716299/iWwVCMXUkoccEMUI29ZA',
+                  send_to: 'AW-17361716299/YP3WCOGDhIccEMUI29ZA',
                   value: 1.0,
                   currency: 'EUR',
                   event_callback: callback,
