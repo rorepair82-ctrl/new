@@ -308,6 +308,9 @@ export default function DatenschutzPage() {
                   Browser speichert.
                 </p>
                 <p>
+                  Rechtsgrundlage für den Einsatz technisch notwendiger Cookies ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technisch fehlerfreien Bereitstellung der Website).
+                </p>
+                <p>
                   Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert
                   werden oder Cookies nur im Einzelfall erlauben.
                 </p>
