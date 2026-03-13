@@ -68,30 +68,7 @@ export default function DatenschutzPage() {
               </p>
             </section>
 
-            {/* Datenerhebung */}
-            <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
-              <div className="flex items-start gap-3 mb-2">
-                <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  3
-                </div>
-                <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Datenerhebung</h2>
-              </div>
-              <div className="space-y-2 text-sm sm:text-base leading-relaxed text-slate-700">
-                <p>
-                  Wir erheben personenbezogene Daten grundsätzlich nur, wenn Sie uns diese freiwillig
-                  mitteilen, zum Beispiel im Rahmen einer Reparaturanfrage, per E-Mail, telefonisch oder
-                  über unser Kontaktformular.
-                </p>
-                <p>Typische verarbeitete Daten sind insbesondere:</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Kontaktdaten (Name, Adresse, Telefon, E-Mail)</li>
-                  <li>Angaben zum Gerät (Typ, Marke, Modell)</li>
-                  <li>Fehlerbeschreibung und sonstige Angaben zur Anfrage</li>
-                  <li>ggf. hochgeladene Dateien (z. B. Fotos vom Typenschild)</li>
-                </ul>
-              </div>
-            </section>
-
+           
             {/* Zwecke der Verarbeitung */}
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
