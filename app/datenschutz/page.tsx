@@ -73,7 +73,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  4
+                  3
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Zwecke der Verarbeitung</h2>
               </div>
@@ -92,7 +92,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  5
+                  4
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Vermittlung an Partnerbetriebe
@@ -125,7 +125,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  6
+                  5
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Kontaktformular</h2>
               </div>
@@ -146,7 +146,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  7
+                  6
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Telefonische Kontaktaufnahme
@@ -168,7 +168,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  8
+                  7
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Weitergabe von Daten an Dienstleister
@@ -191,7 +191,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  9
+                  8
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Speicherdauer</h2>
               </div>
@@ -206,7 +206,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  10
+                  9
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Ihre Rechte</h2>
               </div>
@@ -230,7 +230,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  11
+                  10
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Widerruf von Einwilligungen
@@ -247,7 +247,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  12
+                  11
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Beschwerderecht bei der Aufsichtsbehörde
@@ -278,7 +278,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  13
+                  12
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   SSL- bzw. TLS-Verschlüsselung
@@ -294,7 +294,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  14
+                  13
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Cookies</h2>
               </div>
@@ -318,7 +318,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  15
+                  14
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Server-Logfiles &amp; Hosting
@@ -346,7 +346,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  16
+                  15
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">Datensicherheit</h2>
               </div>
@@ -360,7 +360,7 @@ export default function DatenschutzPage() {
             <section className="bg-white/90 rounded-2xl border border-slate-100 shadow-sm px-5 py-5 sm:px-7 sm:py-6">
               <div className="flex items-start gap-3 mb-2">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-solar-primary/10 text-xs font-semibold text-solar-primary">
-                  17
+                  16
                 </div>
                 <h2 className="text-lg sm:text-xl font-semibold text-slate-900">
                   Aktualität dieser Datenschutzerklärung
