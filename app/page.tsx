@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { company } from '@/lib/company'
 import { baseUrl, buildPageMetadata } from '@/lib/seo'
 import ContactFormCard from '@/components/ContactFormCard'
-import CallConversionLink from '@/components/CallConversionLink'
+import HeroSection from '@/components/HeroSection'
+import HomeSeoText from '@/components/HomeSeoText'
 
 export const metadata = buildPageMetadata({
   title: 'Waschmaschine & Kühlschrank Reparatur Österreich – Service & Montage',
@@ -33,157 +34,7 @@ function HomeContent() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingJsonLd) }}
       />
-      {/* Hero Section – zentrale Service-Karte */}
-      <section
-        className="relative flex items-center justify-center px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-10 md:pb-14 bg-white overflow-hidden"
-        aria-label="Hauptbereich"
-      >
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-24 -right-16 w-72 h-72 bg-solar-primary/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-20 w-80 h-80 bg-solar-secondary/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-5xl px-0 sm:px-4">
-          <div className="px-5 sm:px-7 md:px-9 py-6 sm:py-7 md:py-8">
-            {/* Badge */}
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex items-center px-3 sm:px-4 py-1 rounded-full bg-solar-primary/5 text-solar-dark text-[11px] sm:text-xs font-medium border border-solar-primary/20">
-                <span className="w-4 h-4 rounded-full border border-solar-primary flex items-center justify-center mr-1.5">
-                  <span className="w-2 h-2 rounded-full bg-solar-primary" />
-                </span>
-                Über 5.000 zufriedene Kunden österreichweit
-              </div>
-            </div>
-
-            {/* Heading */}
-            <div className="text-center mb-5 sm:mb-6">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-solar-primary mb-1">
-                Haushaltsgeräte
-              </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
-                Kundendienst
-              </h1>
-            </div>
-
-            {/* Description */}
-            <p className="text-center text-sm sm:text-base text-slate-600 max-w-xl mx-auto mb-6 sm:mb-7">
-              Schnell, zuverlässig und fair. Wir reparieren alle Marken mit transparenten Preisen
-              und hoher Qualität.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-4 sm:mb-5">
-              <CallConversionLink
-                href={`tel:${company.phoneRaw}`}
-                ariaLabel="Jetzt anrufen"
-                className="inline-flex items-center justify-center rounded-full bg-solar-primary hover:bg-solar-dark text-white text-sm sm:text-base font-semibold px-7 sm:px-8 py-2.5 shadow-lg transition-colors"
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                Jetzt anrufen
-              </CallConversionLink>
-
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center justify-center rounded-full border border-solar-primary/25 text-slate-900 text-sm sm:text-base font-semibold px-7 sm:px-8 py-2.5 bg-white hover:bg-solar-primary/5 transition-colors shadow-sm"
-                aria-label="Online Anfrage senden"
-              >
-                Online Anfrage
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-            </div>
-
-            {/* Phone number */}
-            <a
-              href={`tel:${company.phoneRaw}`}
-              className="block text-center text-base sm:text-lg font-semibold text-slate-900 mb-4 hover:text-solar-primary transition-colors"
-            >
-              {company.phone}
-            </a>
-
-            {/* Bullet points */}
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600">
-              <div className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
-                  <svg
-                    className="w-3 h-3 text-solar-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </span>
-                Kostenvoranschlag vor Ort
-              </div>
-              <div className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
-                  <svg
-                    className="w-3 h-3 text-solar-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </span>
-                Faire Preise
-              </div>
-              <div className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-solar-primary/5 border border-solar-primary flex items-center justify-center mr-1.5">
-                  <svg
-                    className="w-3 h-3 text-solar-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </span>
-                Alle Marken
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Kontaktformular direkt nach Hero */}
       <section className="py-12 sm:py-16 md:py-20 px-4 bg-white" aria-labelledby="home-contact-heading">
@@ -242,7 +93,7 @@ function HomeContent() {
             <div className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
               <div className="flex flex-col h-full">
                 <img
-                  src="/services/geschirrspueler.jpg"
+                  src="/services/Geschirrspuler-reparatur.jpg"
                   alt="Geschirrspüler-Reparatur"
                   className="w-full h-40 object-cover"
                   loading="lazy"
@@ -451,106 +302,11 @@ function HomeContent() {
         </div>
       </section>
 
-      {/* Reviews Section – Trust für SEO & Ads */}
-      <section className="relative py-24 md:py-32 px-4 overflow-hidden" id="bewertungen" aria-labelledby="reviews-heading">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1920&q=80"
-            alt="Zufriedene Kunden – Reparatur Haushaltsgeräte"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-solar-primary/10 via-transparent to-solar-secondary/10"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 id="reviews-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Kundenbewertungen: Reparatur & Service
-            </h2>
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="flex items-center gap-1" aria-label="4,8 von 5 Sternen">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-6 h-6 md:w-7 md:h-7 text-yellow-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-white/90 text-lg md:text-xl font-semibold ml-2">4,8</span>
-            </div>
-            <p className="text-white/80 text-base md:text-lg">
-              Über 50 zufriedene Kunden in Österreich
-            </p>
-          </div>
+      {/* Reviews Section removed as requested */}
 
-          {/* Reviews Grid */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-            {/* Review 1 */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl border border-white/20">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-xs text-gray-500 ml-auto">vor 2 Wochen</span>
-              </div>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                "Termin schnell bekommen, Reparatur innerhalb eines Tages erledigt. Freundlich und kompetent – werde ich weiterempfehlen!"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
-                <div className="w-12 h-12 bg-gradient-to-br from-solar-primary to-solar-secondary rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  AB
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Anna Berger</p>
-                  <p className="text-sm text-gray-500">Wien</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Review 2 */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl border border-white/20">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-xs text-gray-500 ml-auto">vor 1 Monat</span>
-              </div>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                "Kühlschrank war defekt – bereits am nächsten Tag vor Ort. Klare Kommunikation, faire Preise. Top!"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  TW
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Thomas Weber</p>
-                  <p className="text-sm text-gray-500">Niederösterreich</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SEO-Text: Keyword-Relevanz (kurz, natürlich) */}
-      <section className="py-8 px-4 bg-white border-t border-gray-100" aria-label="Service-Überblick">
-        <div className="max-w-4xl mx-auto text-center text-gray-600 text-sm md:text-base leading-relaxed">
-          <p>
-            <strong className="text-gray-900">Reparatur Haushaltsgeräte Österreich:</strong> Wir bieten professionelle <strong>Waschmaschinen-Reparatur</strong>, <strong>Kühlschrank-Reparatur</strong>, <strong>Herd-Service</strong> und <strong>Geschirrspüler-Montage</strong> – in Wien und bundesweit. Kostenlose Beratung, faire Festpreise und schnelle Termine. <Link href="/kontakt" className="text-solar-primary font-semibold hover:underline">Jetzt unverbindlich anfragen</Link>.
-          </p>
-        </div>
+      {/* SEO-Text: Service-Beschreibung & interne Links mit "Mehr anzeigen" */}
+      <section className="py-10 sm:py-12 px-4 bg-white border-t border-gray-100" aria-label="Service-Überblick">
+        <HomeSeoText />
       </section>
 
       {/* CTA Section – Conversion-optimiert für Google Ads */}

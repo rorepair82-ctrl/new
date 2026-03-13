@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         solar: {
-          primary: '#034f92',   // primary brand color
-          secondary: '#0469c4', // slightly lighter accent
-          dark: '#023a6c',      // darker hover color
+          primary: '#4f7978',   // primary brand color
+          secondary: '#4f7978', // keep accents aligned with primary
+          dark: '#3b5b5a',      // slightly darker hover color
         },
       },
       fontFamily: {

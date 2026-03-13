@@ -1,3 +1,12 @@
+import { buildPageMetadata } from '@/lib/seo'
+
+export const metadata = buildPageMetadata({
+  title: 'Über uns – Haushaltsgeräte Kundendienst in Österreich',
+  description:
+    'Erfahren Sie mehr über unseren Haushaltsgeräte Kundendienst in Österreich, unsere Mission, Werte und Einsatzgebiete für Reparaturen von Waschmaschinen, Kühlschränken, Geschirrspülern und mehr.',
+  path: '/ueber-uns',
+})
+
 export default function UberUns() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">

@@ -1,7 +1,13 @@
-'use client'
-
 import { company } from '@/lib/company'
 import ContactFormCard from '@/components/ContactFormCard'
+import { buildPageMetadata } from '@/lib/seo'
+
+export const metadata = buildPageMetadata({
+  title: 'Kontakt – Haushaltsgeräte Kundendienst in Österreich',
+  description:
+    'Kontaktieren Sie unseren Kundendienst für Haushaltsgeräte in Österreich per Telefon, E-Mail oder Kontaktformular. Schnelle Hilfe bei defekten Waschmaschinen, Geschirrspülern, Kühlschränken und mehr.',
+  path: '/kontakt',
+})
 
 export default function Kontakt() {
   return (

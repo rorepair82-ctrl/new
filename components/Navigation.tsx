@@ -1,18 +1,28 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { company } from '@/lib/company'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
   const isEnglish = false
   const basePath = pathname || '/'
   const localePrefix = ''
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 0)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handleCallClick = () => {
     if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
@@ -56,7 +66,11 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-slate-50 shadow-sm sticky top-0 z-50 border-b border-slate-200">
+    <nav
+      className={`sticky top-0 z-50 border-b transition-shadow ${
+        scrolled ? 'bg-white shadow-md border-slate-200' : 'bg-white/95 shadow-sm border-slate-100'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -70,7 +84,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-6">
             {/* Home */}
             <Link
               href="/"
@@ -119,11 +133,25 @@ export default function Navigation() {
             >
               Über Uns
             </Link>
+            {/* Karriere */}
+            <Link
+              href="/karriere"
+              className="text-sm text-gray-700 hover:text-solar-primary transition-colors font-normal px-2 py-2"
+            >
+              Karriere
+            </Link>
+            {/* Feedback */}
+            <Link
+              href="/feedback"
+              className="text-sm text-gray-700 hover:text-solar-primary transition-colors font-normal px-2 py-2"
+            >
+              Feedback
+            </Link>
 
             {/* Kontakt / Contact */}
             <Link 
               href="/kontakt" 
-              className="ml-2 text-sm font-semibold text-gray-900 px-3 py-2 relative group"
+              className="text-sm font-semibold text-gray-900 px-2 py-2 relative group"
             >
               <span className="relative z-10 transition-colors group-hover:text-solar-primary">
                 Kontakt
@@ -135,10 +163,10 @@ export default function Navigation() {
             <a
               href={`tel:${company.phoneRaw}`}
               onClick={handleCallClick}
-              className="ml-3 inline-flex items-center px-4 py-2 rounded-full bg-solar-primary text-white text-sm font-semibold shadow-sm hover:bg-solar-dark transition-colors"
+              className="ml-3 inline-flex items-center rounded-xl bg-solar-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-solar-dark transition-colors"
             >
               <svg
-                className="w-4 h-4 mr-2"
+                className="mr-2 h-4 w-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -150,7 +178,7 @@ export default function Navigation() {
                   d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.5 4.5a1 1 0 01-.502 1.21l-1.7.85a11.042 11.042 0 005.516 5.516l.85-1.7a1 1 0 011.21-.502l4.5 1.5A1 1 0 0121 19.72V22a2 2 0 01-2 2h-1C9.82 24 3 17.18 3 9V7a2 2 0 012-2z"
                 />
               </svg>
-              {company.phone}
+              <span className="whitespace-nowrap">Schnellanfrage</span>
             </a>
 
             {/* Language switch removed */}
@@ -234,6 +262,26 @@ export default function Navigation() {
               className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded"
             >
               Über Uns
+            </Link>
+            <Link
+              href="/karriere"
+              onClick={() => {
+                setIsOpen(false)
+                setOpenDropdown(null)
+              }}
+              className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded"
+            >
+              Karriere
+            </Link>
+            <Link
+              href="/feedback"
+              onClick={() => {
+                setIsOpen(false)
+                setOpenDropdown(null)
+              }}
+              className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded"
+            >
+              Feedback
             </Link>
             <Link
               href="/kontakt"
