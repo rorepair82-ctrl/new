@@ -16,14 +16,7 @@ export default function UberUns() {
           <p className="text-sm font-semibold text-solar-primary tracking-wide uppercase mb-3">
             Über uns
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Ihr Partner für Haushaltsgeräte-Reparaturen in Wien
-          </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Seidner Dienstleistungen ist Ihr zuverlässiger Ansprechpartner für die Reparatur von
-            Haushaltsgeräten aller Art. Mit langjähriger Erfahrung und fundiertem Fachwissen sorgen
-            wir dafür, dass Ihre Geräte schnell wieder einsatzbereit sind.
-          </p>
+          
         </div>
       </section>
 
