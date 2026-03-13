@@ -60,7 +60,7 @@ export default function DatenschutzPage() {
                 Verantwortlich für die Datenverarbeitung auf dieser Website ist:
               </p>
               <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-700">
-                <strong>GeräteProfi Kundendienst</strong>
+                
                 <br />
                 Telefon: +43 660 158 3077
                 <br />
@@ -367,7 +367,7 @@ export default function DatenschutzPage() {
                 </h2>
               </div>
               <div className="space-y-2 text-sm sm:text-base leading-relaxed text-slate-700">
-                <p>Diese Datenschutzerklärung hat den Stand: [Monat Jahr].</p>
+                <p>Diese Datenschutzerklärung hat den Stand: März 2026.</p>
                 <p>
                   Wir behalten uns vor, diese Datenschutzerklärung zu aktualisieren, wenn dies aufgrund
                   rechtlicher oder technischer Änderungen erforderlich ist.
